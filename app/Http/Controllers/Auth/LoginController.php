@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -35,12 +36,16 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
             $user = $this->guard()->user();
 
-            //to generate a unique token
-            $user->generateToken();
+            //check if this request is an API request
+            if (strpos($request->path(), 'api') !== false) {
 
-            return response()->json([
-                'data' => $user->toArray(),
-            ]);
+                //generate unique token
+                $user->generateToken();
+                return response()->json(['data' => $user->toArray()], 201);
+            }
+
+            return redirect()->intended('home');
+
         }
 
         return $this->sendFailedLoginResponse($request);

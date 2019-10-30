@@ -10,13 +10,15 @@ Route::group(['namespace'=>"Api"],function(){
 
 });
 
-//Auth routes 
-Route::group(['namespace'=>"Auth"],function(){
+Route::post('register', 'Auth\RegisterController@register');
 
-    Route::post('register', 'RegisterController@register');
-    Route::post('login', 'LoginController@login');
+// //API Auth routes 
+// Route::group(['namespace'=>"Auth"],function(){
 
-});
+//     Route::post('register', 'RegisterController@register');
+//     Route::post('login', 'LoginController@login');
+
+// });
 
 
 
