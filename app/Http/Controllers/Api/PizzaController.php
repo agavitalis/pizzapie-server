@@ -9,12 +9,12 @@ use App\Models\Pizza;
 class PizzaController extends Controller
 {
    
-    public function getAll()
+    public function getAllPizza()
     {
         return Pizza::all();
     }
  
-    public function getOne($id)
+    public function getOnePizza($id)
     {
         return Pizza::find($id);
     }
