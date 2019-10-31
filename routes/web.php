@@ -13,9 +13,9 @@ Route::group(['namespace'=>"Web"],function(){
 
     Route::match(['GET','POST'],'/addPizza','PizzaController@addPizza')->name('addPizza');
     Route::get('/managePizza','PizzaController@managePizza')->name('managePizza');
-    Route:: get('/getPizza/{id}','PizzaController@getPizza')->name('getPizza');
-    Route:: post('/updatePizza','PizzaController@updatePizza')->name('updatePizza');
-    Route:: post('/deletePizza','PizzaController@deletePizza')->name('deletePizza');
+    Route::get('/getPizza/{id}','PizzaController@getPizza')->name('getPizza');
+    Route::post('/updatePizza','PizzaController@updatePizza')->name('updatePizza');
+    Route::post('/deletePizza','PizzaController@deletePizza')->name('deletePizza');
 
     Route::match(['GET','POST'],'/viewOrders','OrderController@viewOrders')->name('viewOrders');
     Route::match(['GET','POST'],'/manageOrder/{id}','OrderController@manageOrder')->name('manageOrder');
