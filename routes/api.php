@@ -8,17 +8,15 @@ Route::group(['namespace'=>"Api"],function(){
     Route::get('getAllPizza', 'PizzaController@getAllPizza');
     Route::get('getOnePizza/{id}', 'PizzaController@getOnePizza');
 
+    Route::post('checkOut', 'OrderController@checkOut');
+
 });
 
+//API Auth routes 
 Route::post('register', 'Auth\RegisterController@register');
+Route::post('register', 'Auth\LoginController@login');
 
-// //API Auth routes 
-// Route::group(['namespace'=>"Auth"],function(){
 
-//     Route::post('register', 'RegisterController@register');
-//     Route::post('login', 'LoginController@login');
-
-// });
 
 
 
