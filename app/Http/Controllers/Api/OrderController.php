@@ -18,14 +18,4 @@ class OrderController extends Controller
         }
         return response()->json(['message' => 'Order well received','status'=>200]);
     }
-
-    public function getAllOrders()
-    {
-        return Order::all();
-    }
- 
-    public function getOneOrder($id)
-    {
-        return Order::find($id);
-    }
 }

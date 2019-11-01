@@ -15,39 +15,42 @@
                             <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Pizza</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Picture</th>
                             <th scope="col">Manage</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php $sn = 1 @endphp
+                            @foreach($allOrders as $order)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
+                                <th scope="row">{{$sn}}</th>
+                                <td>{{$order->first_name}} {{$order->last_name}}</td>
+                                <td>{{$order->pizza}}</td>
+                                <td>{{$order->quantity}}</td>
+                                <td>{{$order->price}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Manage
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item deliver-order"  data-id="{{$order->id}}" data-toggle="modal" data-target="#" href="#">Mark as Delievered</a>         
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item delete-order" href="#" data-id="{{$order->id}}" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
+                            @php $sn ++ @endphp
+                            @endforeach
+                           
                         </tbody>
                     </table>
+                    <div class="text-center">
+                        <?php echo $allOrders->render(); ?>
+                    </div>
                 </div>
             </div>
         </div>
