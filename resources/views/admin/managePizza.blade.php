@@ -134,5 +134,5 @@
 @endsection
 
 @section('script')
-<script src="{{ asset('js/managePizza.js') }}" defer></script>
+<script src="{{ asset('js/managePizza.js') }}" ></script>
 @endsection

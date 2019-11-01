@@ -14,8 +14,16 @@ class OrderController extends Controller
         return view('admin.viewOrders',compact('allOrders'));
     }
 
-    public function manageOrder($id = null)
-    {
-        return view('admin.manageOrder');
+    public function markDelievered(Request $request){
+
+        Order::where(['id' => $request->id])->update(['order_status'=>1]);
+        return response()->json(array('message' => 'Order Marked as Delievered'));
     }
+
+    public function deleteOrder(Request $request){
+
+        Order::find($request->id)->delete();
+        return response()->json(array('message' => 'Order Deleted'));
+    }
+
 }
