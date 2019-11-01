@@ -11,7 +11,7 @@ class PizzaController extends Controller
    
     public function getAllPizza()
     {
-        return  Pizza::all();
+        return  Pizza::all()->random(10);
     }
  
     public function getOnePizza($id)
