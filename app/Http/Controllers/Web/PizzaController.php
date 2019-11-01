@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pizza;
+use JD\Cloudder\Facades\Cloudder;
 class PizzaController extends Controller
 {
     public function __construct()
@@ -20,7 +21,8 @@ class PizzaController extends Controller
 
         }else if($request->isMethod('POST')){
 
-            $image_name = $this->uploadImage($request);
+            //$image_name = $this->uploadImage($request);
+            $image_name = $this->uploadImageCloudinary($request);
             Pizza::create(['name'=>$request->name,'price'=>$request->price,'category'=>$request->pizza_category,'picture'=>$image_name]);
             return back()->with('success','Pizza Created Successfully');
         }
@@ -50,7 +52,7 @@ class PizzaController extends Controller
                 //
             } finally {
 
-                $image_name = $this->uploadImage($request);
+                $image_name = $this->uploadImageCloudinary($request);
                 Pizza::where(['id' => $request->id])->update(['name'=>$request->name,'price'=>$request->price,'category'=>$request->pizza_category,'picture'=>$image_name]);
                 
                 return back()->with('success', 'Pizza Edit was successful');
@@ -80,6 +82,16 @@ class PizzaController extends Controller
         );
 
         return $new_image_name;
+    }
+
+    public function uploadImageCloudinary($request){
+
+        $image_name = $request->file('pizza_picture')->getRealPath();;
+        Cloudder::upload($image_name, null);
+        $image_url= Cloudder::show(Cloudder::getPublicId());
+
+        return $image_url;
+
     }
 
 }

@@ -15,7 +15,7 @@
                             <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Pizza</th>
+                            <th scope="col">Order No</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Price</th>
                             <th scope="col">Status</th>
@@ -28,7 +28,7 @@
                             <tr>
                                 <th scope="row">{{$sn}}</th>
                                 <td>{{$order->first_name}} {{$order->last_name}}</td>
-                                <td>{{$order->pizza}}</td>
+                                <td>{{$order->order_code}}</td>
                                 <td>{{$order->quantity}}</td>
                                 <td>{{$order->price}}</td>
                                 <td> {{$order->order_status == 0? "Not Delievered": 'Delievered'}}</td>
@@ -38,9 +38,10 @@
                                             Manage
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item deliver-order"  data-id="{{$order->id}}" data-toggle="modal" data-target="#deliverModal" >Mark as Delievered</a>         
+                                            <a class="dropdown-item" href="/viewOrder/{{$order->order_code}}" >View Details</a>  
+                                            <a class="dropdown-item deliver-order" data-order_code="{{$order->order_code}}" data-id="{{$order->id}}" data-toggle="modal" data-target="#deliverModal" >Mark Delievered</a>         
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item delete-order" data-id="{{$order->id}}" data-toggle="modal" data-target="#deleteModal">Delete</a>
+                                            <a class="dropdown-item delete-order" data-order_code="{{$order->order_code}}" data-id="{{$order->id}}" data-toggle="modal" data-target="#deleteModal">Delete</a>
                                         </div>
                                     </div>
                                 </td>

@@ -30,7 +30,7 @@
                                 <td>{{$pizza->name}}</td>
                                 <td>${{$pizza->price}}</td>
                                 <td>{{$pizza->category}}</td>
-                                <td><img src='{{"storage/uploads/".$pizza->picture}}' alt="" height='40' width='40'></td>
+                                <td><img src='{{$pizza->picture}}' alt="" height='40' width='40'></td>
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

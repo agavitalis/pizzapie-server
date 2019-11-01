@@ -18,6 +18,7 @@ Route::group(['namespace'=>"Web"],function(){
     Route::post('/deletePizza','PizzaController@deletePizza')->name('deletePizza');
 
     Route::match(['GET','POST'],'/viewOrders','OrderController@viewOrders')->name('viewOrders');
+    Route::get('/viewOrder/{order_code}','OrderController@viewOrder')->name('viewOrder');
     Route::post('/deleteOrder','OrderController@deleteOrder')->name('deleteOrder');
     Route::post('/deliverOrder','OrderController@markDelievered')->name('markDelievered');
     

@@ -10,8 +10,14 @@ class OrderController extends Controller
 {
     public function viewOrders()
     {
-        $allOrders = Order::paginate(5);
+        $allOrders = Order::distinct('order_code')->paginate(5);
         return view('admin.viewOrders',compact('allOrders'));
+    }
+
+    public function viewOrder($order_code = null)
+    {
+        $allOrders = Order::where(['order_code'=>$order_code])->get();
+        return view('admin.viewOrder',compact('allOrders','order_code'));
     }
 
     public function markDelievered(Request $request){
