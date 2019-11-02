@@ -39,7 +39,7 @@ $(document).ready(function(){
                 $('#price_edit').val(response.pizza.price)
                 $('#category_edit').text(response.pizza.category) 
                 $('#category_edit').val(response.pizza.category) 
-                $('#edit-img').attr('src','storage/uploads/'+response.pizza.picture) 
+                $('#edit-img').attr('src',response.pizza.picture) 
                 
                 //then show the modal
                 $('#editModal').modal('show');
