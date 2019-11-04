@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function viewOrders()
     {
-        $allOrders = Order::distinct('order_code')->paginate(5);
+        $allOrders = Order::distinct('order_code')->orderBy('created_at', 'DESC')->paginate(5);
         return view('admin.viewOrders',compact('allOrders'));
     }
 

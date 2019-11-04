@@ -52,7 +52,7 @@
                         </tbody>
                     </table>
                     <div class="text-center">
-                        <?php echo $allOrders->render(); ?>
+                       {{ $allOrders->links() }}
                     </div>
                 </div>
             </div>
