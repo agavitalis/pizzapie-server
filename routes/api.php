@@ -14,9 +14,7 @@ Route::group(['namespace'=>"Api"],function(){
 
 //API Auth routes 
 Route::post('register', 'Auth\RegisterController@register');
-Route::post('register', 'Auth\LoginController@login');
-
-
+Route::post('login', 'Auth\LoginController@login');
 
 
 
